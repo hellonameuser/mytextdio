@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .video-feed {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(180deg, #000, #222);
+            position: relative;
+            scroll-snap-align: start;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        video {
+            max-height: 80%;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .like, .dislike, .star {
+            position: absolute;
+            bottom: 80px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            padding: 10px;
+            border-radius: 50%;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s;
+        }
+
+        .action-btn.like-btn {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+
+        .action-btn.dislike-btn {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+        }
+
+        .action-btn.star-btn {
+            background: linear-gradient(135deg, #f4c10f, #ff9900);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="video-feed">
+        <div class="video-container">
+            <div class="overlay"></div>
+            <video autoplay loop muted>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="like">
+                <button class="action-btn like-btn" onclick="openFormLink()">👍</button>
+                <button class="action-btn dislike-btn" onclick="openFormLink()">👎</button>
+                <button class="action-btn star-btn" onclick="openFormLink()">⭐</button>
+            </div>
+
+            <div class="controls">
+                <button class="button" onclick="playPauseVideo(this)">Play/Pause</button>
+                <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="overlay"></div>
+            <video autoplay loop muted>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="like">
+                <button class="action-btn like-btn" onclick="openFormLink()">👍</button>
+                <button class="action-btn dislike-btn" onclick="openFormLink()">👎</button>
+                <button class="action-btn star-btn" onclick="openFormLink()">⭐</button>
+            </div>
+
+            <div class="controls">
+                <button class="button" onclick="playPauseVideo(this)">Play/Pause</button>
+                <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="overlay"></div>
+            <video autoplay loop muted>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="like">
+                <button class="action-btn like-btn" onclick="openFormLink()">👍</button>
+                <button class="action-btn dislike-btn" onclick="openFormLink()">👎</button>
+                <button class="action-btn star-btn" onclick="openFormLink()">⭐</button>
+            </div>
+
+            <div class="controls">
+                <button class="button" onclick="playPauseVideo(this)">Play/Pause</button>
+                <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function playPauseVideo(button) {
+            const video = button.closest('.video-container').querySelector('video');
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+
+        function muteUnmuteVideo(button) {
+            const video = button.closest('.video-container').querySelector('video');
+            video.muted = !video.muted;
+        }
+
+        function openFormLink() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=header', '_blank');
+        }
+    </script>
+</body>
+</html>
