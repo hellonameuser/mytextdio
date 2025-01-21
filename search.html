@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
+            margin: 10px 0;
+            font-size: 18px;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .file-list li a {
+            text-decoration: none;
+            color: #f1c40f;
+        }
+        .file-list li:hover {
+            transform: scale(1.1);
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML File Search</h1>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for an HTML file..." onkeyup="filterFiles()">
+    </div>
+    <ul class="file-list" id="fileList">
+        <!-- Files will be dynamically loaded here -->
+    </ul>
+
+    <script>
+        // Sample file names (replace with actual files from your server)
+        const files = ["index.html", "about.html", "contact.html", "portfolio.html", "services.html", "test video.html"];
+
+        // Populate the file list
+        const fileList = document.getElementById('fileList');
+        files.forEach(file => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = file;
+            link.target = "_blank";
+            link.textContent = file.replace('.html', ''); // Remove .html extension
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+        });
+
+        // Filter files based on search input
+        function filterFiles() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = fileList.getElementsByTagName('li');
+            
+            for (let i = 0; i < items.length; i++) {
+                const text = items[i].textContent.toLowerCase();
+                if (text.includes(input)) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
