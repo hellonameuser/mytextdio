@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <style>
+        /* Genel stil */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 1rem;
+        }
+
+        /* Arama kutusu stili */
+        #searchTerm {
+            padding: 0.8rem;
+            width: 300px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Arama düğmesi stili */
+        button {
+            padding: 0.8rem 1.5rem;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            background: #6a11cb;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+
+        /* Vurgulama stili */
+        .highlight {
+            background-color: #fbc02d;
+            color: #000;
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Animasyon */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body, h1, p, input, button {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+   
+
+    <div>
+        <input type="text" id="searchTerm" placeholder="Aramak istediğiniz kelime">
+        <button onclick="searchText()">Ara</button>
+    </div>
+
+    <script>
+        function searchText() {
+            // Önce tüm vurguları temizleyelim
+            const highlighted = document.querySelectorAll('.highlight');
+            highlighted.forEach((el) => {
+                el.classList.remove('highlight');
+                el.outerHTML = el.innerText; // Eski haliyle değiştir
+            });
+
+            const term = document.getElementById('searchTerm').value.trim();
+            if (!term) {
+                alert('Lütfen bir arama terimi girin.');
+                return;
+            }
+
+            const bodyContent = document.body;
+            const regex = new RegExp(term, 'gi');
+
+            // HTML içeriğinde arama yap
+            const walker = document.createTreeWalker(bodyContent, NodeFilter.SHOW_TEXT);
+            while (walker.nextNode()) {
+                const node = walker.currentNode;
+                if (regex.test(node.nodeValue)) {
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    span.innerHTML = node.nodeValue.replace(regex, (match) => `<mark>${match}</mark>`);
+                    node.parentNode.replaceChild(span, node);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video1</title>
+    <p>video1<p>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .video-container {
+            border: 5px solid white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 640px;
+            height: 360px;
+            background-color: #f0f0f0;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+        }
+        .buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .buttons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+        .buttons button:hover {
+            color: gold;
+        }
+        .buttons .like::after {
+            content: "👍";
+        }
+        .buttons .dislike::after {
+            content: "👎";
+        }
+        .buttons .star::after {
+            content: "⭐";
+        }
+        .buttons .comment::after {
+            content: "💬";
+        }
+     </style>
+</head>
+<body>
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="buttons">
+        <button class="like" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="dislike" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="star" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="comment" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+    </div>
+</body>
+</html>
