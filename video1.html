@@ -1,0 +1,80 @@
+ </div>
+</body>
+</html>
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video2</title>
+    <p>video2<p>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .video-container {
+            border: 5px solid white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 640px;
+            height: 360px;
+            background-color: #f0f0f0;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+        }
+        .buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .buttons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+        .buttons button:hover {
+            color: gold;
+        }
+        .buttons .like::after {
+            content: "👍";
+        }
+        .buttons .dislike::after {
+            content: "👎";
+        }
+        .buttons .star::after {
+            content: "⭐";
+        }
+        .buttons .comment::after {
+            content: "💬";
+        }
+     </style>
+</head>
+<body>
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="buttons">
+        <button class="like" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="dislike" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="star" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button class="comment" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+    </div>
+</body>
+</html>
