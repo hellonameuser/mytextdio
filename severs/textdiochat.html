@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mytextdio chat</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chat-container {
+            width: 400px;
+            height: 600px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: linear-gradient(145deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f7f7f7;
+        }
+        .chat-messages .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .chat-messages .message.sent {
+            justify-content: flex-end;
+        }
+        .chat-messages .message.received {
+            justify-content: flex-start;
+        }
+        .chat-messages .message .content {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .chat-messages .message.sent .content {
+            background: linear-gradient(145deg, #4facfe, #00f2fe);
+            color: white;
+        }
+        .chat-messages .message.received .content {
+            background: #e5e5ea;
+            color: #333;
+        }
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        .chat-input button {
+            background: linear-gradient(145deg, #4facfe, #00f2fe);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            transform: scale(1.1);
+        }
+        .media-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        .media-buttons button {
+            background: linear-gradient(145deg, #4facfe, #00f2fe);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .media-buttons button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">Online Chat</div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="message received">
+            <div class="content">Merhaba! Size nasıl yardımcı olabilirim?</div>
+        </div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Bir mesaj yazın...">
+        <button onclick="sendMessage()">send</button>
+    </div>
+    <div class="media-buttons">
+        <button onclick="sendMedia('photo')">📸</button>
+        <button onclick="sendMedia('video')">📽️</button>
+        <button onclick="sendMedia('audio')">🔊</button>
+    </div>
+</div>
+<script>
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const messageText = messageInput.value.trim();
+        if (messageText) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message sent';
+            messageElement.innerHTML = `<div class="content">${messageText}</div>`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            messageInput.value = '';v 
+        }
+    }
+
+    function sendMedia(type) {
+        const chatMessages = document.getElementById('chatMessages');
+        const mediaMessage = document.createElement('div');
+        mediaMessage.className = 'message sent';
+        mediaMessage.innerHTML = `<div class="content">${type.toUpperCase()} gönderildi!</div>`;
+        chatMessages.appendChild(mediaMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
