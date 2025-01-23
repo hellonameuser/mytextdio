@@ -1,80 +1,73 @@
- </div>
-</body>
-</html>
-  </script>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vhello</title>
-    <p>hello video<p>
+    <title>Web Viewer</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             background-color: black;
+            font-family: 'Arial', sans-serif;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
         }
-        .video-container {
-            border: 5px solid white;
-            border-radius: 15px;
-            overflow: hidden;
-            width: 640px;
-            height: 360px;
-            background-color: #f0f0f0;
-        }
-        video {
+
+        iframe {
             width: 100%;
-            height: 100%;
-        }
-        .buttons {
-            margin-top: 10px;
-            display: flex;
-            gap: 10px;
-        }
-        .buttons button {
-            background: none;
+            height: 90%;
             border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .buttons button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
             color: white;
-            font-size: 24px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .buttons button:hover {
-            color: gold;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.7);
         }
-        .buttons .like::after {
-            content: "👍";
+
+        .buttons button:active {
+            transform: scale(1);
         }
-        .buttons .dislike::after {
-            content: "👎";
-        }
-        .buttons .star::after {
-            content: "⭐";
-        }
-        .buttons .comment::after {
-            content: "💬";
-        }
-     </style>
+    </style>
 </head>
 <body>
-    <div class="video-container">
-        <video controls>
-            <source src="video/hello.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+    <iframe src="https://drive.google.com/file/d/1zH1pZ_trTkeQGHXhOjbK-hNxWYlI-eNb/view?usp=sharing" title="Web Viewer"></iframe>
     <div class="buttons">
-        <button class="like" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
-        <button class="dislike" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
-        <button class="star" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
-        <button class="comment" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=dialog'"></button>
+        <button onclick="openLink()">👍 Like</button>
+        <button onclick="openLink()">👎 Dislike</button>
+        <button onclick="openLink()">⭐ Star</button>
     </div>
+
+    <script>
+        function openLink() {
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeoywhd6dEqmgG1rLpqkGGdDkQxVlEI0AvUxtdq0lmJlTOQjQ/viewform?usp=header', '_blank');
+        }
+    </script>
 </body>
 </html>
