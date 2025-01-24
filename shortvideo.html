@@ -108,7 +108,28 @@
     </style>
 </head>
 <body>
-  
+  <div class="video-container">
+    <div class="overlay"></div>
+    <video autoplay loop muted>
+        <source src="example.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="like">
+        <button class="action-btn like-btn" onclick="openFormLink()">👍</button>
+        <button class="action-btn dislike-btn" onclick="openFormLink()">👎</button>
+        <button class="action-btn star-btn" onclick="openFormLink()">⭐</button>
+    </div>
+
+    <div class="controls">
+        <button class="button" onclick="playPauseVideo(this)">Play/Pause</button>
+        <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
+    </div>
+</div>
+<div class="title">
+<p>video1 like;0 star;0<p>
+</div>
+
 
          
 
