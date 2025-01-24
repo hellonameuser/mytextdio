@@ -17,4 +17,5 @@
     </div>
 </div>
 <div class="title">
-<p>video1 like;0 star;0
+<p>video1 like;0 star;0<p>
+</div>
