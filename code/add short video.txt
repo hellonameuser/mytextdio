@@ -16,7 +16,7 @@
         <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
 
 <div class="title">
-<p>video1 like;0 star;0<p>
+<title>video1 like;0 star;0<title>
 </div>
 
     </div>
