@@ -14,8 +14,10 @@
     <div class="controls">
         <button class="button" onclick="playPauseVideo(this)">Play/Pause</button>
         <button class="button" onclick="muteUnmuteVideo(this)">Mute/Unmute</button>
-    </div>
-</div>
+
 <div class="title">
 <p>video1 like;0 star;0<p>
+</div>
+
+    </div>
 </div>
